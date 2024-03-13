@@ -1,11 +1,13 @@
 const port = process.env.PORT || 3000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
-const fastify = require('fastify')({
-  logger: true
+import Fastify from 'fastify'
+import cors from '@fastify/cors'
+import { Client, Environment } from 'square'
+
+const fastify = Fastify()
+await fastify.register(cors, { 
+  // put your options here
 })
-const { Client, Environment } = require('square');
-const cors = require('fastify-cors');
-fastify.register(cors);
 
 const squareClient = new Client({
   accessToken: process.env.mj_sqp_token,
