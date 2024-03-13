@@ -1,9 +1,9 @@
 const port = process.env.PORT || 3000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
-
 const fastify = require('fastify')({
   logger: true
 })
+const { Client, Environment } = require('square');
 const cors = require('fastify-cors');
 fastify.register(cors);
 
